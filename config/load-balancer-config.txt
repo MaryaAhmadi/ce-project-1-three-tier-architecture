@@ -1,0 +1,22 @@
+# Application Load Balancer Configuration
+--------------------------------------------
+
+ALB Name: project-alb
+Type: internet-facing
+Subnets: public-project-subnet-1, public-project-subnet-2
+Listeners: HTTP 80
+Health Check Endpoint: /health
+Health Check Protocol: HTTP
+Health Check Port: 80
+Target Group: project-app-tg
+Target Type: Instance
+Targets Registered: project-app-instance-1, project-app-instance-2, project-app-instance-3
+Stickiness: Off
+Security Group: project-sg-alb
+--------------------------------------------
+
+
+# Notes:
+- ALB deployed across 2 AZs for high availability
+- Only routes traffic to healthy targets
+- Security group allows inbound traffic from the internet

@@ -1,0 +1,30 @@
+
+
+
+# Security Groups
+---------------------------
+
+## ALB Security Group (project-sg-alb)
+Allow inbound HTTP 80 from 0.0.0.0/0
+Allow inbound HTTPS 443 from 0.0.0.0/0
+Outbound: All traffic allowed
+---------------------------
+
+
+## Application Instances Security Group (project-sg-app)
+Allow inbound HTTP 80 from ALB SG only
+Allow inbound HTTPS 443 from ALB SG only
+Outbound: All traffic allowed
+---------------------------
+
+
+## Database Security Group (project-sg-db)
+Allow inbound MySQL 3306 from App SG only
+Outbound: All traffic allowed
+---------------------------
+
+
+# Notes:
+- Principle of least privilege applied
+- No private tier has direct internet access
+- Each SG named after its tier for clarity

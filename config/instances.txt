@@ -1,0 +1,54 @@
+
+
+
+# =====================================================
+# EC2 Instances Overview - Project: 3-Tier Architecture
+# =====================================================
+# This file documents all EC2 instances used in the project.
+# Includes instance IDs, private IPs, availability zones,
+# subnet type, instance type, and purpose in the architecture.
+# =====================================================
+
+# -----------------------------
+# Application Tier Instances
+# -----------------------------
+
+Instance Name: project-app-instance-1
+Instance ID: i-0a79a0e12d80b1fc0
+Private IP: 10.0.3.202
+Availability Zone: us-east-1a
+Subnet: private-app-subnet-1 (Private)
+Instance Type: t3.micro
+Purpose: Runs the web application; registered with the ALB target group; responds to /health endpoint.
+
+Instance Name: project-app-instance-2
+Instance ID: i-02f5a7adb1ba50dce
+Private IP: 10.0.4.87
+Availability Zone: us-east-1b
+Subnet: private-app-subnet-2 (Private)
+Instance Type: t3.micro
+Purpose: Runs the web application; registered with the ALB target group; responds to /health endpoint.
+
+Instance Name: project-app-instance-3
+Instance ID: i-0d7a22a52a438b4b5
+Private IP: 10.0.3.203
+Availability Zone: us-east-1a
+Subnet: private-app-subnet-1 (Private)
+Instance Type: t3.micro
+Purpose: Runs the web application; registered with the ALB target group; responds to /health endpoint.
+
+# -----------------------------
+# Database Tier Security Group
+# -----------------------------
+# While not an instance, the DB Security Group is documented here for completeness.
+
+Security Group Name: project-sg-db
+Security Group ID: sg-xxxxx
+Purpose: Allows inbound MySQL/Aurora traffic from application tier instances only; ensures database isolation.
+
+# =====================================================
+# Notes:
+# - All application instances are in private subnets and cannot be accessed directly from the internet.
+# - Each instance reports its ID, AZ, and database connection status through the web application.
+# - ALB distributes traffic evenly across these instances for high availability.
+# =====================================================

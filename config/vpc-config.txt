@@ -1,0 +1,37 @@
+
+
+
+# VPC Configuration
+----------------------
+
+VPC ID: vpc-0c8d14af0d7db0ffc
+Name: 3tier-vpc
+CIDR: 10.0.0.0/16
+Region: us-east-1
+----------------------
+
+# Subnets
+## Public Subnets (Presentation Layer)
+public-project-subnet-1: 10.0.1.0/24, AZ: us-east-1a, Public
+public-project-subnet-2: 10.0.2.0/24, AZ: us-east-1b, Public
+
+## Private Subnets (Application Layer)
+private-app-subnet-1: 10.0.3.0/24, AZ: us-east-1a, Private
+private-app-subnet-2: 10.0.4.0/24, AZ: us-east-1b, Private
+
+## Private Subnets (Data Layer)
+private-data-subnet-1: 10.0.5.0/24, AZ: us-east-1a, Private
+private-data-subnet-2: 10.0.6.0/24, AZ: us-east-1b, Private
+----------------------
+
+Internet Gateway: Attached
+
+----------------------
+
+# Route Tables
+public-project-rt: Associated with public subnets, routes 0.0.0.0/0 via IGW
+private-project-rt: Associated with private subnets, routes 0.0.0.0/0 via NAT
+
+
+
+
