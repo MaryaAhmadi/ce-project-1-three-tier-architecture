@@ -1,0 +1,43 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>3-Tier AWS App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            text-align: center;
+            padding: 40px;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        h1 { color: #2c3e50; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>3-Tier AWS Demo</h1>
+        <p><strong>Instance ID:</strong> <span id="instance">Loading...</span></p>
+        <p><strong>Availability Zone:</strong> <span id="az">Loading...</span></p>
+        <p><strong>Database Status:</strong> <span style="color:green;">Connected</span></p>
+    </div>
+
+<script>
+fetch("http://169.254.169.254/latest/meta-data/instance-id")
+  .then(r => r.text())
+  .then(t => document.getElementById("instance").innerText = t);
+
+fetch("http://169.254.169.254/latest/meta-data/placement/availability-zone")
+  .then(r => r.text())
+  .then(t => document.getElementById("az").innerText = t);
+</script>
+</body>
+</html>
